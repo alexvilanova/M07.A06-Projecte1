@@ -40,6 +40,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role_id' => 1,
         ]);
 
         event(new Registered($user));
@@ -48,6 +49,6 @@ class RegisteredUserController extends Controller
 
         $user->sendEmailVerificationNotification();
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::HOME)->with('success', 'Se ha creado la cuenta correctamente!');
     }
 }

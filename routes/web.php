@@ -14,11 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+use Illuminate\Http\Request;
+// ...
+Route::get('/', function (Request $request) {
+   $message = 'Loading welcome page';
+   Log::info($message);
+   $request->session()->flash('info', $message);
+   return view('welcome');
 });
 
-Route::get('/dashboard', function () {
+
+Route::get('/dashboard', function (Request $request) {
+    if (!$request->session()->has('success')) {
+        $request->session()->flash('success', '¡Has iniciado sesión!');
+    }
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
