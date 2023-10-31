@@ -6,7 +6,9 @@
 			<div class="container">
 				<h1>Detalles del Archivo</h1>
 				<img class="img-fluid" src="{{ asset("storage/{$file->filepath}") }}" />
-
+				<p>Tamaño de la imagen: {{ $file->filesize}} bytes</p>
+				<p>Fecha publicación: {{ $file->updated_at}}</p>
+				
 				<form method="POST" action="{{ route('files.destroy', $file->id) }}">
 				    @csrf
 				    @method('DELETE')
@@ -14,8 +16,7 @@
 				</form>
 
 				<a href="{{ route('files.edit', $file->id) }}" class="btn btn-primary">Editar</a>
-			    </div>
-                </div>
+				<a href="{{ route('files.index') }}" class="btn btn-primary">Volver a la lista</a>
             </div>
         </div>
     </div>

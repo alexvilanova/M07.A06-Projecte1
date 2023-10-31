@@ -43,6 +43,22 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-
+    
+    public function hasAnyRole($roles)
+    {
+        if (is_array($roles)) {
+            foreach ($roles as $role) {
+                if ($this->roles->contains('name', $role)) {
+                    return true;
+                }
+            }
+        } else {
+            if ($this->roles->contains('name', $roles)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     
 }

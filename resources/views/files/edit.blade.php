@@ -4,7 +4,6 @@
             {{ __('Files') }}
         </h2>
     </x-slot>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -13,7 +12,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="upload">Selecciona un Archivo</label>
-                            <input type="file" name="upload" class="form-control" accept=".jpg, .jpeg, .png, .gif" required>
+                            <input type="file" name="upload" class="form-control" accept=".jpg, .jpeg, .png, .gif">
                         </div>
                         <button type="submit" class="btn btn-primary">Subir Archivo</button>
                     </form>

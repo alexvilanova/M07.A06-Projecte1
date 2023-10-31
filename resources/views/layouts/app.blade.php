@@ -29,6 +29,9 @@
 
             <!-- Page Content -->
             <main>
+                <div class="container">
+                    @include('partials.flash')
+                </div>
                 {{ $slot }}
             </main>
         </div>
