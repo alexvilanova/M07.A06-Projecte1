@@ -139,5 +139,5 @@ class FileController extends Controller
     // Elimina el registro de la BD
     $file->delete();
 
-    return redirect()->route('files.index')->with('success', 'Archivo eliminado correctamente.');    }
+    return redirect()->route('files.index')->with('success', 'Publicación eliminada correctamente.');    }
 }

@@ -29,7 +29,7 @@
 
             <!-- Page Content -->
             <main>
-                <div class="container">
+                <div class="w-full">
                     @include('partials.flash')
                 </div>
                 {{ $slot }}

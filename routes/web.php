@@ -41,6 +41,6 @@ Route::get('mail/test', [MailController::class, 'test']);
 // Route::get('mail/test', 'App\Http\Controllers\MailController@test');
 
 use App\Http\Controllers\FileController;
-Route::resource('files', FileController::class)->middleware(['auth', 'role.any:1,2']);
+Route::resource('files', FileController::class)->middleware(['auth', 'role.any:2,3']);
 
 require __DIR__.'/auth.php';
