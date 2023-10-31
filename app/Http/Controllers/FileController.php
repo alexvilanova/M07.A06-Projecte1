@@ -64,12 +64,12 @@ class FileController extends Controller
             \Log::debug("DB storage OK");
             // Patró PRG amb missatge d'èxit
             return redirect()->route('files.show', $file)
-                ->with('success', 'File successfully saved');
+                ->with('success', 'Publicación guardada con éxito');
         } else {
             \Log::debug("Disk storage FAILS");
             // Patró PRG amb missatge d'error
             return redirect()->route("files.create")
-                ->with('error', 'ERROR uploading file');
+                ->with('error', 'Error subiendo publicación');
         }
     }
  
@@ -123,7 +123,7 @@ class FileController extends Controller
             ]);
         }
     
-        return redirect()->route('files.show', $file)->with('success', 'Archivo actualizado con éxito');
+        return redirect()->route('files.show', $file)->with('success', ' Publicación creada con éxito');
     }
     
     /**

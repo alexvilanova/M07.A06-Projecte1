@@ -4,8 +4,10 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
 			<div class="container">
-				<h1>Detalles del Archivo</h1>
+				<h1>Detalles de la publicación</h1>
+				<hr>
 				<img class="img-fluid" src="{{ asset("storage/{$file->filepath}") }}" />
+				<hr>
 				<p>Tamaño de la imagen: {{ $file->filesize}} bytes</p>
 				<p>Fecha publicación: {{ $file->updated_at}}</p>
 				

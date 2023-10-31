@@ -7,4 +7,5 @@
             </div>
             <button type="submit" class="btn btn-primary">Subir Archivo</button>
         </form>
+        <a href="{{ route('files.index') }}" class="btn btn-primary">Volver</a>
 </x-app-layout>

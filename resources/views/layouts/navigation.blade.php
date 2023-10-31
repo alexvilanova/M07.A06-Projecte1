@@ -74,6 +74,11 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <!-- Enlace a files.index -->
+            <x-responsive-nav-link :href="route('files.index')" :active="request()->routeIs('files.*')">
+                {{ __('Files') }}
+            </x-responsive-nav-link>
+
         </div>
 
         <!-- Responsive Settings Options -->
