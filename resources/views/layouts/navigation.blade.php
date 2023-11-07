@@ -15,6 +15,10 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <!-- Enlace a posts -->
+                    <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.*')">
+                        {{ __('Publicar') }}
+                    </x-nav-link>
                     <!-- Enlace a files.index -->
                     <x-nav-link :href="route('files.index')" :active="request()->routeIs('files.*')">
                         {{ __('Files') }}
