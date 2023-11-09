@@ -15,14 +15,15 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <!-- Enlace a posts -->
+                    <!-- Enlace a posts.index -->
                     <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.*')">
-                        {{ __('Publicar') }}
+                        {{ __('Posts') }}
                     </x-nav-link>
                     <!-- Enlace a files.index -->
                     <x-nav-link :href="route('files.index')" :active="request()->routeIs('files.*')">
                         {{ __('Files') }}
                     </x-nav-link>
+                    <!-- Enlace a places.index -->
                     <x-nav-link :href="route('places.index')" :active="request()->routeIs('places.*')">
                         {{ __('Places') }}
                     </x-nav-link>
@@ -81,9 +82,17 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <!-- Enlace a posts.index -->
+            <x-responsive-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.*')">
+                {{ __('Posts') }}
+            </x-responsive-nav-link>
             <!-- Enlace a files.index -->
             <x-responsive-nav-link :href="route('files.index')" :active="request()->routeIs('files.*')">
                 {{ __('Files') }}
+            </x-responsive-nav-link>
+            <!-- Enlace a places.index -->
+            <x-responsive-nav-link :href="route('places.index')" :active="request()->routeIs('places.*')">
+                {{ __('Places') }}
             </x-responsive-nav-link>
 
         </div>

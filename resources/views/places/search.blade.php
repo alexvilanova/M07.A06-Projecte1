@@ -23,7 +23,6 @@
                             <p class="text-gray-600">{{ $place->description }}</p>
                             <p>Latitud: {{ $place->latitude }}</p>
                             <p>Longitud: {{ $place->longitude }}</p>
-                            <p class="font-semibold">Usuario: {{ $place->user ? $place->user->name : 'No hay información disponible'}}</p>
                             <p>Fecha de creación: {{ $place->created_at }}</p>
                             <p>Fecha de actualización: {{ $place->updated_at }}</p>
                             <div class="mt-4">
@@ -38,7 +37,7 @@
                         </div>
                     </div>
                 @endforeach
-                {{ $places->links() }}
+                
             </div>
         </div>
     </div>

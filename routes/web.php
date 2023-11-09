@@ -46,11 +46,11 @@ Route::resource('files', FileController::class)->middleware(['auth', 'role.any:1
 use App\Http\Controllers\PlacesController;
 Route::resource('places', PlacesController::class);
 
-Route::get('search', 'App\Http\Controllers\PlacesController@search')->name('places.search');
+Route::get('places.search', 'App\Http\Controllers\PlacesController@search')->name('places.search');
 
 use App\Http\Controllers\PostController;
 Route::resource('posts', PostController::class)->middleware(['auth', 'role.any:1']);
 
-Route::get('search', 'App\Http\Controllers\PostController@search')->name('posts.search');
+Route::get('posts.search', 'App\Http\Controllers\PostController@search')->name('posts.search');
 
 require __DIR__.'/auth.php';
