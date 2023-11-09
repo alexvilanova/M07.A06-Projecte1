@@ -41,6 +41,11 @@ Route::get('mail/test', [MailController::class, 'test']);
 // Route::get('mail/test', 'App\Http\Controllers\MailController@test');
 
 use App\Http\Controllers\FileController;
-Route::resource('files', FileController::class)->middleware(['auth', 'role.any:2,3']);
+Route::resource('files', FileController::class)->middleware(['auth', 'role.any:1,2']);
+
+use App\Http\Controllers\PlacesController;
+Route::resource('places', PlacesController::class);
+
+Route::get('search', 'App\Http\Controllers\PlacesController@search')->name('places.search');
 
 require __DIR__.'/auth.php';
