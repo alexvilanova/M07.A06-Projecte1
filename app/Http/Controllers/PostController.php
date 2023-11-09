@@ -103,7 +103,7 @@ class PostController extends Controller
     {
         $fileExists = Storage::disk('public')->exists($post->file->filepath);
         if (!$fileExists) {
-            return redirect()->route('posts.index')->with('error', 'Publicación');
+            return redirect()->route('posts.index')->with('error', 'No se ha podido encontrar la imagen publicada');
         }
         return view('posts.show', compact('post'));
     }
