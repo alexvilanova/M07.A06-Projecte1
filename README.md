@@ -1,4 +1,4 @@
-# Proyecto Laravel M07.A06
+# Proyecto Laravel 0.2
 
 ## Requisitos Previos
 
