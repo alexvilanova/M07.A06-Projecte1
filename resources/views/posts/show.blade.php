@@ -10,7 +10,8 @@
 				<hr>
                 <p>Usuario: {{ $post->user->name }}</p>
 				<p>Tamaño de la imagen: {{ $post->file->filesize}} bytes</p>
-				<p>Fecha publicación: {{ $post->updated_at}}</p>
+				<p>Fecha publicación: {{ $post->updated_at}}</p>				
+				<p>Likes: {{ $post->liked()->count() }}</p>
                 <form method="POST" action="{{ route('posts.destroy', $post->id) }}">
 				    @csrf
 				    @method('DELETE')

@@ -170,5 +170,34 @@ class PostController extends Controller
         // Elimina el registro de la BD
         $post->file->delete();
         $post->delete();
-        return redirect()->route('posts.index')->with('success', 'Publicación eliminada correctamente.');    }
+        return redirect()->route('posts.index')->with('success', 'Publicación eliminada correctamente.');    
     }
+
+    
+    public function like(Post $post)
+    {
+        $user = auth()->user();
+        // Comprueba si ya ha dado like y manda con error
+        if ($user->likes->contains($post)) {
+            return back()->with('error', ' Ya has dado like a esta publicación');
+        }
+        else {
+            $user->likes()->attach($post);
+
+            return back()->with('success', 'Has dado like a la publicación');            
+        }
+    }
+    public function unlike(Post $post)
+    {
+        $user = auth()->user();
+        // Comprueba si el usuario no ha dado like y manda con error
+        if (!$user->likes->contains($post)) {
+            return back()->with('error', 'Aún no has dado like a esta publicación.');
+        }
+
+        // Remueve el like
+        $user->likes()->detach($post);
+
+        return back()->with('success', 'Has quitado el like a la publicación.');
+    }
+}

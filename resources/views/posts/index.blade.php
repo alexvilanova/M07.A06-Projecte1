@@ -23,6 +23,20 @@
                             <p class="text-lg font-semibold">Usuario: {{ $post->user ? $post->user->name : 'No hay información disponible'}}</p>
                             <p class="text-lg font-semibold">Título: {{ $post->user ? $post->title : 'No hay información disponible'}}</p>
                             <p class="text-gray-600">Descripción: {{ $post->description ? $post->description : 'No hay información disponible'}}</p>
+                            <p>{{ $post->liked()->count() }}</p>
+                            @if (!auth()->user()->likes->contains($post))
+                            <form method="POST" action="{{ route('posts.likes', $post) }}">
+                                @csrf
+                                <button type="submit">Like</button>
+                            </form>
+                            @endif
+                            @if (auth()->user()->likes->contains($post))
+                                <form method="POST" action="{{ route('posts.unlike', $post) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit">Unlike</button>
+                                </form>
+                            @endif
                             <a href="{{ route('posts.show', $post)}}">
                                 <img class="img-fluid mt-4" src="{{ asset('storage/' . $post->file->filepath) }}" alt="Imagen" />
                             </a>
