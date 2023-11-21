@@ -12,19 +12,28 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Livewire;
 
 class FileResource extends Resource
 {
     protected static ?string $model = File::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-document';
+    protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('filepath')
-                    ->required(),
+                Forms\Components\FileUpload::make('filepath')
+                ->required()
+                ->image()
+                ->maxSize(2048)
+                ->directory('uploads')
+                ->getUploadedFileNameForStorageUsing(function (Livewire\TemporaryUploadedFile $file): string {
+                    return time() . '_' . $file->getClientOriginalName();
+                }),
+                // Forms\Components\TextInput::make('filesize')
+                //     ->required(),
             ]);
     }
 
@@ -32,7 +41,6 @@ class FileResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id'),
                 Tables\Columns\TextColumn::make('filepath'),
                 Tables\Columns\TextColumn::make('filesize'),
                 Tables\Columns\TextColumn::make('created_at')
@@ -44,6 +52,7 @@ class FileResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
@@ -52,10 +61,19 @@ class FileResource extends Resource
             ]);
     }
     
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+    
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageFiles::route('/'),
+            'index' => Pages\ListFiles::route('/'),
+            'create' => Pages\CreateFile::route('/create'),
+            'edit' => Pages\EditFile::route('/{record}/edit'),
         ];
     }    
 }

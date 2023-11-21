@@ -49,7 +49,7 @@ Route::resource('places', PlacesController::class);
 Route::get('places.search', 'App\Http\Controllers\PlacesController@search')->name('places.search');
 
 use App\Http\Controllers\PostController;
-Route::resource('posts', PostController::class)->middleware(['auth', 'role.any:1']);
+Route::resource('posts', PostController::class)->middleware(['auth', 'role.any:1,2,3']);
 
 Route::get('posts.search', 'App\Http\Controllers\PostController@search')->name('posts.search');
 

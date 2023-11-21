@@ -20,9 +20,9 @@
                     </div>
                     @foreach ($posts as $post)
                         <div class="mb-4 border p-4 rounded shadow">
-                            <p class="text-lg font-semibold">Usuario: {{ $post->user ? $post->user->name : 'No hay información disponible'}}</p>
-                            <p class="text-lg font-semibold">Título: {{ $post->user ? $post->title : 'No hay información disponible'}}</p>
-                            <p class="text-gray-600">Descripción: {{ $post->description ? $post->description : 'No hay información disponible'}}</p>
+                            <p class="text-lg font-semibold">{{ $post->user ? $post->user->name : 'No hay información disponible'}}</p>
+                            <div>{!! $post->title !!}</div>
+                            <div>{!! $post->description !!}</div>
                             <p>{{ $post->liked()->count() }}</p>
                             @if (!auth()->user()->likes->contains($post))
                             <form method="POST" action="{{ route('posts.likes', $post) }}">

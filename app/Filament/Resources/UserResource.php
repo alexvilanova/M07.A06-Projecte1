@@ -29,11 +29,13 @@ class UserResource extends Resource
                     ->email()
                     ->required(),
                 Forms\Components\DateTimePicker::make('email_verified_at'),
-                // Forms\Components\TextInput::make('password')
-                //     ->password()
-                //     ->required(),
-                Forms\Components\TextInput::make('role_id'),
-            ]);
+                Forms\Components\TextInput::make('password')
+                    ->password()
+                    ->required(),
+                Forms\Components\Select::make('role_id')
+                ->relationship('role', 'name')
+                ->required(),
+                         ]);
     }
 
     public static function table(Table $table): Table

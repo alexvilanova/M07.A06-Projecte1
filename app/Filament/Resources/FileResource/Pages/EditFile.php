@@ -4,16 +4,16 @@ namespace App\Filament\Resources\FileResource\Pages;
 
 use App\Filament\Resources\FileResource;
 use Filament\Pages\Actions;
-use Filament\Resources\Pages\ManageRecords;
+use Filament\Resources\Pages\EditRecord;
 
-class ManageFiles extends ManageRecords
+class EditFile extends EditRecord
 {
     protected static string $resource = FileResource::class;
 
     protected function getActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\DeleteAction::make(),
         ];
     }
 }
