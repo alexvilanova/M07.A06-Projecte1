@@ -53,8 +53,14 @@ Route::post('places/{place}/favs', [PlacesController::class, 'favorite'])->name(
 Route::delete('places/{place}/favs', [PlacesController::class, 'unfavorite'])->name('places.unfavorite');
 
 use App\Http\Controllers\PostController;
-Route::resource('posts', PostController::class)->middleware(['auth', 'role.any:1']);
+Route::resource('posts', PostController::class)->middleware(['auth', 'role.any:1,2,3']);
 
 Route::get('posts.search', 'App\Http\Controllers\PostController@search')->name('posts.search');
+
+
+// Likes de posts
+Route::post('/posts/{post}/likes', [PostController::class, 'like'])->name('posts.likes');
+Route::delete('/posts/{post}/likes', [PostController::class, 'unlike'])->name('posts.unlike');
+
 
 require __DIR__.'/auth.php';

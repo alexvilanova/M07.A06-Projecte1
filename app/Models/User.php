@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Filament\Models\Contracts\FilamentUser;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -59,6 +60,12 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    public function canAccessFilament(): bool
+    {
+        return in_array($this->role_id, ['2', '3']); // Devuelve true si eres editor o admin
+    }
+ 
     public function posts()
     {
         return $this->hasMany(Post::class, 'author_id');
@@ -73,4 +80,15 @@ class User extends Authenticatable
         return $this->belongsToMany(Place::class, 'favorites');
     }
 
+    
+    public function likes()
+    {
+        return $this->belongsToMany(Post::class, 'likes');
+    }	
+    
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+ 
 }
