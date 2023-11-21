@@ -16,7 +16,7 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 @foreach ($places as $place)
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
                         <img src="{{ asset('storage/' . $place->file->filepath) }}" alt="Imagen del lugar" class="img-fluid w-full h-64 object-cover">
                         <div class="p-6">
                             <h2 class="text-xl font-semibold">{{ $place->name }}</h2>
@@ -27,6 +27,22 @@
                             <p>Fecha de creación: {{ $place->created_at }}</p>
                             <p>Fecha de actualización: {{ $place->updated_at }}</p>
                             <div class="mt-4">
+                                
+                                @if (!auth()->user()->favorites->contains($place))
+                                    <form method="POST" action="{{ route('places.favorite', $place) }}">
+                                        @csrf
+                                        <button type="submit">Favorite</button>
+                                    </form>
+                                @endif
+
+                                @if (auth()->user()->favorites->contains($place))
+                                    <form method="POST" action="{{ route('places.unfavorite', $place) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit">Unfavorite</button>
+                                    </form>
+                                @endif
+                                
                                 <a href="{{ route('places.show', $place->id) }}" class="btn btn-primary">Ver</a>
                                 <br><a href="{{ route('places.edit', $place->id) }}" class="btn btn-primary">Editar</a>
                                 <form action="{{ route('places.destroy', $place->id) }}" method="POST">
@@ -38,8 +54,8 @@
                         </div>
                     </div>
                 @endforeach
-                {{ $places->links() }}
             </div>
+            {{ $places->links() }}
         </div>
     </div>
 </x-app-layout>

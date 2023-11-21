@@ -132,4 +132,30 @@ class PlacesController extends Controller // Cambia el nombre del controlador
 
         return redirect()->route('places.index')->with('success', 'Lugar eliminado correctamente.');
     }
+
+    public function favorite(Place $place)
+    {
+        $user = auth()->user();
+
+        if ($user->favorites->contains($place)) {
+            return back()->with('error', ' Ya has dado like a esta publicación');
+        }
+        else {
+            $user->favorites()->attach($place);
+
+            return back()->with('success', 'Has dado like a la publicación');            
+        }
+    }
+    public function unfavorite(Place $place)
+    {
+        $user = auth()->user();
+        
+        if (!$user->favorites->contains($place)) {
+            return back()->with('error', 'Aún no has dado like a esta publicación.');
+        }
+
+        $user->favorites()->detach($place);
+
+        return back()->with('success', 'Has quitado el like a la publicación.');
+    }
 }
