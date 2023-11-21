@@ -41,6 +41,7 @@ class FileResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('id'),
                 Tables\Columns\TextColumn::make('filepath'),
                 Tables\Columns\TextColumn::make('filesize'),
                 Tables\Columns\TextColumn::make('created_at')

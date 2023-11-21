@@ -12,12 +12,16 @@
 				<p>Tamaño de la imagen: {{ $post->file->filesize}} bytes</p>
 				<p>Fecha publicación: {{ $post->updated_at}}</p>				
 				<p>Likes: {{ $post->liked()->count() }}</p>
+				@can('delete', $post)
                 <form method="POST" action="{{ route('posts.destroy', $post->id) }}">
 				    @csrf
 				    @method('DELETE')
 				    <button type="submit" class="btn btn-danger">Eliminar</button>
 				</form>
+				@endcan
+				@can('update', $post)
 				<a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">Editar</a>
+				@endcan
 			</div>
         </div>
     </div>

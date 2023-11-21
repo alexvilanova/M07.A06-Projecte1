@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Storage;
 
 class PlacesController extends Controller // Cambia el nombre del controlador
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Place::class, 'place');
+    }
+
     public function index()
     {
         return view("places.index", [

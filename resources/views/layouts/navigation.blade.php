@@ -20,9 +20,11 @@
                         {{ __('Posts') }}
                     </x-nav-link>
                     <!-- Enlace a files.index -->
+                    @can('viewAny', App\Models\File::class)
                     <x-nav-link :href="route('files.index')" :active="request()->routeIs('files.*')">
                         {{ __('Files') }}
                     </x-nav-link>
+                    @endcan
                     <!-- Enlace a places.index -->
                     <x-nav-link :href="route('places.index')" :active="request()->routeIs('places.*')">
                         {{ __('Places') }}
@@ -87,9 +89,11 @@
                 {{ __('Posts') }}
             </x-responsive-nav-link>
             <!-- Enlace a files.index -->
+            @can('viewAny', App\Models\File::class)
             <x-responsive-nav-link :href="route('files.index')" :active="request()->routeIs('files.*')">
                 {{ __('Files') }}
             </x-responsive-nav-link>
+            @endcan
             <!-- Enlace a places.index -->
             <x-responsive-nav-link :href="route('places.index')" :active="request()->routeIs('places.*')">
                 {{ __('Places') }}

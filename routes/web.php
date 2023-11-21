@@ -41,7 +41,7 @@ Route::get('mail/test', [MailController::class, 'test']);
 // Route::get('mail/test', 'App\Http\Controllers\MailController@test');
 
 use App\Http\Controllers\FileController;
-Route::resource('files', FileController::class)->middleware(['auth', 'role.any:1,2']);
+Route::resource('files', FileController::class)->middleware(['auth']);
 
 use App\Http\Controllers\PlacesController;
 Route::resource('places', PlacesController::class);
@@ -53,7 +53,7 @@ Route::post('places/{place}/favs', [PlacesController::class, 'favorite'])->name(
 Route::delete('places/{place}/favs', [PlacesController::class, 'unfavorite'])->name('places.unfavorite');
 
 use App\Http\Controllers\PostController;
-Route::resource('posts', PostController::class)->middleware(['auth', 'role.any:1,2,3']);
+Route::resource('posts', PostController::class)->middleware(['auth']);
 
 Route::get('posts.search', 'App\Http\Controllers\PostController@search')->name('posts.search');
 
