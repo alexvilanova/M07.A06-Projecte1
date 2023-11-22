@@ -20,8 +20,8 @@
                             <textarea name="description" class="form-control">{{ $place->description }}</textarea>
                         </div>
                         <div class="form-group">
-                            <label for="imagen">Imagen</label>
-                            <input type="file" name="imagen" class="form-control" accept=".jpg, .jpeg, .png, .gif">
+                            <label for="upload">Imagen</label>
+                            <input type="file" name="upload" class="form-control" accept=".jpg, .jpeg, .png, .gif">
                         </div>
                         <div class="form-group">
                             <label for="coordenadas">Coordenadas</label>
@@ -34,10 +34,6 @@
                         <div class="form-group">
                             <label for="longitude">Longitud</label>
                             <input type="text" name="longitude" class="form-control" value="{{ $place->longitude }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="author_id">ID del Autor</label>
-                            <input type="text" name="author_id" class="form-control" value="{{ $place->author_id }}">
                         </div>
                         <button type="submit" class="btn btn-primary">Actualizar Lugar</button>
                     </form>

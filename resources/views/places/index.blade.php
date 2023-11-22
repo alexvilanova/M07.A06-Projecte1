@@ -17,9 +17,11 @@
                                 Buscar
                             </button>
                         </form>
+                        @can('create', App\Models\Place::class)
                         <a href="{{ route('places.create') }}"
                             class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Crear Nuevo Lugar</a>
-                    </div>
+                        @endcan
+                        </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         @foreach ($places as $place)
                         <div class="relative bg-white overflow-hidden shadow-lg sm:rounded-lg">

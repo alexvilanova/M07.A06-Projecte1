@@ -23,15 +23,19 @@
                         <a href="{{ route('places.index', $place->id) }}"
                             class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mr-2">Volver a la
                             lista</a>
+                        @can('update',$place)
                         <a href="{{ route('places.edit', $place->id) }}"
                             class="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded mr-2">Editar</a>
-                        <form action="{{ route('places.destroy', $place->id) }}" method="POST"
+                        @endcan
+                            @can('delete', $place)
+                            <form action="{{ route('places.destroy', $place->id) }}" method="POST"
                             onsubmit="return confirm('¿Estás seguro?')">
                             @csrf
                             @method('DELETE')
                             <button type="submit"
                                 class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded">Eliminar</button>
-                        </form>
+                            </form>
+                            @endcan
                     </div>
                 </div>
             </div>

@@ -28,12 +28,12 @@ class PostController extends Controller
     public function search(Request $request)
     {
         $query = $request->input('query');
+        
         $posts = Post::where('title', 'like', "%$query%")
-        ->orWhere('description', 'like', "%$query%")->get();
-        $numPosts = $posts->count();
-        return view('posts.search', compact('posts', 'numPosts'));
+            ->orWhere('description', 'like', "%$query%")
+            ->paginate(5);        
+        return view('posts.index', compact('posts'));
     }
-
 
     /**
      * Show the form for creating a new resource.

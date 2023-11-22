@@ -25,9 +25,8 @@ class PlacesController extends Controller // Cambia el nombre del controlador
     {
         $query = $request->input('query');
         $places = Place::where('name', 'like', "%$query%")
-            ->orWhere('description', 'like', "%$query%")->get();
-        $numPlaces = $places->count();
-        return view('places.search', compact('places', 'numPlaces'));
+            ->orWhere('description', 'like', "%$query%")->paginate(5);
+        return view('places.index', compact('places'));
     }
 
     public function create()
