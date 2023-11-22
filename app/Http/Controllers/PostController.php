@@ -181,6 +181,7 @@ class PostController extends Controller
     
     public function like(Post $post)
     {
+        $this->authorize('like', Post::class);
         $user = auth()->user();
         // Comprueba si ya ha dado like y manda con error
         if ($user->likes->contains($post)) {
@@ -194,6 +195,7 @@ class PostController extends Controller
     }
     public function unlike(Post $post)
     {
+        $this->authorize('like', Post::class);
         $user = auth()->user();
         // Comprueba si el usuario no ha dado like y manda con error
         if (!$user->likes->contains($post)) {

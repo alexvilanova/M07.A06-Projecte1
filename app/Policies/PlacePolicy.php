@@ -63,4 +63,10 @@ class PlacePolicy
     {
         return $user->id == $place->author_id || $user->role_id == 2;
     }
+    
+    public function like(User $user): bool
+    {
+        return $user->role_id == 1;
+    }
+
 }

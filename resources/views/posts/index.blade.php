@@ -26,6 +26,7 @@
                             <div>{!! $post->title !!}</div>
                             <div>{!! $post->description !!}</div>
                             <p>{{ $post->liked()->count() }}</p>
+                            @can('like',App\Models\Post::class )
                             @if (!auth()->user()->likes->contains($post))
                             <form method="POST" action="{{ route('posts.likes', $post) }}">
                                 @csrf
@@ -39,6 +40,7 @@
                                     <button type="submit">Unlike</button>
                                 </form>
                             @endif
+                            @endcan
                             <a href="{{ route('posts.show', $post)}}">
                                 <img class="img-fluid mt-4" src="{{ asset('storage/' . $post->file->filepath) }}" alt="Imagen" />
                             </a>

@@ -34,10 +34,12 @@
                                     <div class="absolute inset-0 flex items-center justify-center">
                                         <h2 class="text-white text-lg font-semibold">{{ $place->name }}</h2>
                                     </div>
+                                    
                                     <div
                                         class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent group-hover:from-transparent group-hover:to-black">
                                         <!-- Resto del contenido -->
 
+                                        @can('like',App\Models\Place::class )
                                         @if (!auth()->user()->favorites->contains($place))
                                         <form method="POST" action="{{ route('places.favorite', $place) }}">
                                             @csrf
@@ -55,6 +57,7 @@
                                                 Favorito</button>
                                         </form>
                                         @endif
+                                        @endcan
                                     </div>
                                 </a>
                             </div>
