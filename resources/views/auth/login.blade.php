@@ -5,8 +5,13 @@
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
+        <!-- Customized icon -->
+        <div class="flex items-center justify-center mb-6">
+            <i class="fi fi-ss-user text-7xl text-blue-800"></i>
+        </div>
         <!-- Email Address -->
         <div>
+            
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
@@ -40,7 +45,7 @@
             @endif
 
             <x-primary-button class="ml-3">
-                {{ __('Log in') }}
+                {{ __('Log in') }} 
             </x-primary-button>
         </div>
     </form>

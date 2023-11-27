@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="max-w-5xl mx-auto bg-white p-6 rounded-lg shadow-md">
+    <div class="max-w-5xl mx-auto bg-white bg-opacity-40 p-6 rounded-lg shadow-md">
         <h2 class="text-2xl font-semibold text-gray-800 mb-4">Subir Archivo</h2>
         <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
             @csrf
@@ -23,7 +23,7 @@
             </div>
         </form>
         <div class="mt-4">
-            <a href="{{ route('files.index') }}" class="block text-center bg-gray-200 hover:bg-gray-300 text-blue-500 font-semibold py-2 px-4 rounded-md">Volver</a>
+            <a href="{{ route('posts.index') }}" class="block text-center bg-gray-200 hover:bg-gray-300 text-blue-500 font-semibold py-2 px-4 rounded-md">Volver</a>
         </div>
     </div>
 </x-app-layout>

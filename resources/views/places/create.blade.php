@@ -6,35 +6,35 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <form method="POST" action="{{ route('places.store') }}" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-group">
-                            <label for="name">Nombre</label>
-                            <input type="text" name="name" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Descripción</label>
-                            <textarea name="description" class="form-control"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="upload">Imagen</label>
-                            <input type="file" name="upload" class="form-control" accept=".jpg, .jpeg, .png, .gif">
-                        </div>
-                        <div class="form-group">
-                            <label for="latitude">Latitud</label>
-                            <input type="text" name="latitude" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="longitude">Longitud</label>
-                            <input type="text" name="longitude" class="form-control">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Guardar Lugar</button>
-                    </form>
-                    <a href="{{ route('places.index') }}" class="btn btn-primary">Volver</a>
-                </div>
+        <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white bg-opacity-60 overflow-hidden shadow-sm sm:rounded-lg p-6">
+                <form method="POST" action="{{ route('places.store') }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-4">
+                        <label for="name" class="block text-sm font-semibold text-gray-600">Nombre</label>
+                        <input type="text" name="name" class="w-full p-2 border rounded-md">
+                    </div>
+                    <div class="mb-4">
+                        <label for="description" class="block text-sm font-semibold text-gray-600">Descripción</label>
+                        <textarea name="description" class="w-full p-2 border rounded-md"></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label for="upload" class="block text-sm font-semibold text-gray-600">Imagen</label>
+                        <input type="file" name="upload" class="w-full p-2 border rounded-md" accept=".jpg, .jpeg, .png, .gif">
+                    </div>
+                    <div class="mb-4">
+                        <label for="latitude" class="block text-sm font-semibold text-gray-600">Latitud</label>
+                        <input type="text" name="latitude" class="w-full p-2 border rounded-md">
+                    </div>
+                    <div class="mb-6">
+                        <label for="longitude" class="block text-sm font-semibold text-gray-600">Longitud</label>
+                        <input type="text" name="longitude" class="w-full p-2 border rounded-md">
+                    </div>
+                    <div class="flex space-x-4">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Guardar Lugar</button>
+                        <a href="{{ route('places.index') }}" class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded">Volver</a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

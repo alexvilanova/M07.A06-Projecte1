@@ -2,6 +2,10 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
+        <div class="flex items-center justify-center mb-6">
+            <i class="fi fi-ss-user text-7xl text-blue-800"></i>
+        </div>
+
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Name')" />

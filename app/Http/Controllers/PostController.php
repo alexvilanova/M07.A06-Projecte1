@@ -32,6 +32,10 @@ class PostController extends Controller
         $posts = Post::where('title', 'like', "%$query%")
             ->orWhere('description', 'like', "%$query%")
             ->paginate(5);        
+        $num = $posts->count();
+        if ($num == 0 || empty($query)) {
+            return redirect()->route('posts.index')->with('error', 'No se han encontrado publicaciones');
+        }
         return view('posts.index', compact('posts'));
     }
 

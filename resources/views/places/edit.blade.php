@@ -4,38 +4,48 @@
             {{ __('Places') }}
         </h2>
     </x-slot>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+            <div class="bg-white bg-opacity-40 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white bg-opacity-40 border-b border-gray-200">
                     <form action="{{ route('places.update', $place->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        <div class="form-group">
-                            <label for="name">Nombre</label>
-                            <input type="text" name="name" class="form-control" value="{{ $place->name }}">
+
+                        <div class="mb-4 ">
+                            <label for="name" class="block text-sm font-semibold text-gray-600">Nombre</label>
+                            <input type="text" name="name" class="w-full p-2 border rounded-md" value="{{ $place->name }}">
                         </div>
-                        <div class="form-group">
-                            <label for="description">Descripción</label>
-                            <textarea name="description" class="form-control">{{ $place->description }}</textarea>
+
+                        <div class="mb-4">
+                            <label for="description" class="block text-sm font-semibold text-gray-600">Descripción</label>
+                            <textarea name="description" class="w-full p-2 border rounded-md">{{ $place->description }}</textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="upload">Imagen</label>
-                            <input type="file" name="upload" class="form-control" accept=".jpg, .jpeg, .png, .gif">
+
+                        <div class="mb-4">
+                            <label for="imagen" class="block text-sm font-semibold text-gray-600">Imagen</label>
+                            <input type="file" name="imagen" class="w-full p-2 border rounded-md" accept=".jpg, .jpeg, .png, .gif">
                         </div>
-                        <div class="form-group">
-                            <label for="coordenadas">Coordenadas</label>
-                            <input type="text" name="coordenadas" class="form-control" value="{{ $place->coordenadas }}">
+
+                        <div class="mb-4">
+                            <label for="coordenadas" class="block text-sm font-semibold text-gray-600">Coordenadas</label>
+                            <input type="text" name="coordenadas" class="w-full p-2 border rounded-md" value="{{ $place->coordenadas }}">
                         </div>
-                        <div class="form-group">
-                            <label for="latitude">Latitud</label>
-                            <input type="text" name="latitude" class="form-control" value="{{ $place->latitude }}">
+
+                        <div class="mb-4">
+                            <label for="latitude" class="block text-sm font-semibold text-gray-600">Latitud</label>
+                            <input type="text" name="latitude" class="w-full p-2 border rounded-md" value="{{ $place->latitude }}">
                         </div>
-                        <div class="form-group">
-                            <label for="longitude">Longitud</label>
-                            <input type="text" name="longitude" class="form-control" value="{{ $place->longitude }}">
+
+                        <div class="mb-4">
+                            <label for="longitude" class="block text-sm font-semibold text-gray-600">Longitud</label>
+                            <input type="text" name="longitude" class="w-full p-2 border rounded-md" value="{{ $place->longitude }}">
                         </div>
-                        <button type="submit" class="btn btn-primary">Actualizar Lugar</button>
+
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Actualizar Lugar</button>
+
+                        <a href="{{ route('places.show', $place) }}" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">Inicio</a>
                     </form>
                 </div>
             </div>
