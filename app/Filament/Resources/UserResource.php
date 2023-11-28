@@ -24,17 +24,21 @@ class UserResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                    ->required(),
+                    ->required()
+                    ->translateLabel(),
                 Forms\Components\TextInput::make('email')
                     ->email()
-                    ->required(),
+                    ->required()
+                    ->translateLabel(),
                 Forms\Components\DateTimePicker::make('email_verified_at'),
                 Forms\Components\TextInput::make('password')
                     ->password()
-                    ->required(),
+                    ->required()
+                    ->translateLabel(),
                 Forms\Components\Select::make('role_id')
                 ->relationship('role', 'name')
-                ->required(),
+                ->required()
+                ->translateLabel(),
                          ]);
     }
 
@@ -42,15 +46,15 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('email'),
+                Tables\Columns\TextColumn::make('name')->translateLabel(),
+                Tables\Columns\TextColumn::make('email')->translateLabel(),
                 Tables\Columns\TextColumn::make('email_verified_at')
-                    ->dateTime(),
+                    ->dateTime()->translateLabel(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
+                    ->dateTime()->translateLabel(),
                 Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('role_id'),
+                    ->dateTime()->translateLabel(),
+                Tables\Columns\TextColumn::make('role_id')->translateLabel(),
             ])
             ->filters([
                 //
