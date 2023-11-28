@@ -11,7 +11,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="mb-4 flex justify-between items-center">
                         <form action="{{ route('posts.search') }}" method="get" class="flex">
-                            <input type="text" name="query" placeholder="Buscar posts..."
+                            <input type="text" name="query" placeholder="{{ __('Search posts...') }}"
                                 class="border rounded-l-md p-2 w-64">
                             <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white rounded-r-md p-2">
                                 <i class="fi fi-br-search"></i>
@@ -26,10 +26,12 @@
                     @foreach ($posts as $post)
                         <div class="mb-8 border p-3 rounded shadow mx-auto sm:w-full md:w-1/1 lg:w-1/1 xl:w-1/1">
                             <p class="text-lg font-semibold">
-                                {{ $post->user ? $post->user->name : 'No hay información disponible' }}</p>
+                                {{ $post->user ? $post->user->name : __('No information available') }}</p>
                             <a href="{{ route('posts.show', $post) }}">
-                                <img class="img-fluid mt-2" src="{{ asset('storage/' . $post->file->filepath) }}"
+                                @if ($post->file)
+                                <img class="img-fluid mt-2" src="{{ asset('storage/' . $post->file->filepath ) }}"
                                     alt="Imagen" />
+                                @endif
                             </a>
                             <br>
                             <div class="flex items-center justify-between mt-2">

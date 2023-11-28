@@ -24,10 +24,13 @@
                 <x-nav-link :href="route('places.index')" :active="request()->routeIs('places*')">
                     {{ __('Places') }}
                 </x-nav-link>
+                
             </div>
 
             <!-- User Dropdown -->
+            
             <div class="hidden sm:flex items-center space-x-4">
+                <x-language-switcher />
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center text-sm font-medium text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">

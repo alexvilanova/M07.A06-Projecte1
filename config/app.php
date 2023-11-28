@@ -83,8 +83,16 @@ return [
     |
     */
 
-    'locale' => 'en',
+    // 'locale' => 'en',
 
+    'locale' => 'es',
+    'fallback_locale' => 'en',
+    'available_locales' => [
+        'es' => 'Castellano',
+        'ca' => 'Català',
+        'en' => 'English',
+    ],
+ 
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
@@ -96,7 +104,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    // 'fallback_locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------

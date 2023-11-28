@@ -14,38 +14,33 @@
                         @method('PUT')
 
                         <div class="mb-4 ">
-                            <label for="name" class="block text-sm font-semibold text-gray-600">Nombre</label>
+                            <label for="name" class="block text-sm font-semibold text-gray-600">{{__('Name')}}</label>
                             <input type="text" name="name" class="w-full p-2 border rounded-md" value="{{ $place->name }}">
                         </div>
 
                         <div class="mb-4">
-                            <label for="description" class="block text-sm font-semibold text-gray-600">Descripción</label>
+                            <label for="description" class="block text-sm font-semibold text-gray-600">{{__('Description')}}</label>
                             <textarea name="description" class="w-full p-2 border rounded-md">{{ $place->description }}</textarea>
                         </div>
 
                         <div class="mb-4">
-                            <label for="imagen" class="block text-sm font-semibold text-gray-600">Imagen</label>
+                            <label for="imagen" class="block text-sm font-semibold text-gray-600">{{__('Image')}}</label>
                             <input type="file" name="imagen" class="w-full p-2 border rounded-md" accept=".jpg, .jpeg, .png, .gif">
                         </div>
 
                         <div class="mb-4">
-                            <label for="coordenadas" class="block text-sm font-semibold text-gray-600">Coordenadas</label>
-                            <input type="text" name="coordenadas" class="w-full p-2 border rounded-md" value="{{ $place->coordenadas }}">
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="latitude" class="block text-sm font-semibold text-gray-600">Latitud</label>
+                            <label for="latitude" class="block text-sm font-semibold text-gray-600">{{__('Latitude')}}</label>
                             <input type="text" name="latitude" class="w-full p-2 border rounded-md" value="{{ $place->latitude }}">
                         </div>
 
                         <div class="mb-4">
-                            <label for="longitude" class="block text-sm font-semibold text-gray-600">Longitud</label>
+                            <label for="longitude" class="block text-sm font-semibold text-gray-600">{{__('Longitude')}}</label>
                             <input type="text" name="longitude" class="w-full p-2 border rounded-md" value="{{ $place->longitude }}">
                         </div>
 
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Actualizar Lugar</button>
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">{{__('Update Place')}}</button>
 
-                        <a href="{{ route('places.show', $place) }}" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">Inicio</a>
+                        <a href="{{ route('places.show', $place) }}" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">{{__('Home')}}</a>
                     </form>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Detalles del lugar') }}
+            {{ __('Place Details') }}
         </h2>
     </x-slot>
 
@@ -13,14 +13,14 @@
                         src="{{ asset('storage/' . $place->file->filepath) }}" alt="Place Image">
                 </div>
                 <div>
-                    <p class="mb-2"><strong>Nombre:</strong> {{ $place->name }}</p>
-                    <p class="mb-2"><strong>Descripción:</strong> {{ $place->description }}</p>
-                    <p class="mb-2"><strong>Latitud:</strong> {{ $place->latitude }}</p>
-                    <p class="mb-2"><strong>Longitud:</strong> {{ $place->longitude }}</p>
+                    <p class="mb-2"><strong>{{__('Name')}}:</strong> {{ $place->name }}</p>
+                    <p class="mb-2"><strong>{{__('Description')}}:</strong> {{ $place->description }}</p>
+                    <p class="mb-2"><strong>{{__('Latitude')}}:</strong> {{ $place->latitude }}</p>
+                    <p class="mb-2"><strong>{{__('Longitude')}}:</strong> {{ $place->longitude }}</p>
 
                     <hr class="my-6">
 
-                    <p class="mb-2"><strong>Fecha de creación:</strong> {{ $place->created_at->format('d M Y H:i') }}</p>
+                    <p class="mb-2"><strong>{{__('Creation Date')}}:</strong> {{ $place->created_at->format('d M Y H:i') }}</p>
 
                     <div class="flex justify-end mt-6">
                         <a href="{{ route('places.index', $place->id) }}"
@@ -35,7 +35,7 @@
                         @endcan
                         @can('delete',$place)
                         <form action="{{ route('places.destroy', $place->id) }}" method="POST"
-                            onsubmit="return confirm('¿Estás seguro?')">
+                            onsubmit="return confirm('Are you sure?')">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded">

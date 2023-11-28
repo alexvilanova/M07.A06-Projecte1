@@ -69,12 +69,12 @@ class FileController extends Controller
             \Log::debug("DB storage OK");
             // Patró PRG amb missatge d'èxit
             return redirect()->route('files.show', $file)
-                ->with('success', 'Publicación guardada con éxito');
+                ->with('success', __('Post saved successfully'));
         } else {
             \Log::debug("Disk storage FAILS");
             // Patró PRG amb missatge d'error
             return redirect()->route("files.create")
-                ->with('error', 'Error subiendo publicación');
+                ->with('error', __('Error uploading post'));
         }
     }
  
@@ -86,7 +86,7 @@ class FileController extends Controller
         $fileExists = Storage::disk('public')->exists($file->filepath);
     
         if (!$fileExists) {
-            return redirect()->route('files.index')->with('error', 'Imagen no encontrada');
+            return redirect()->route('files.index')->with('error', __('Image not found'));
         }
     
         return view('files.show', compact('file'));
@@ -128,7 +128,7 @@ class FileController extends Controller
             ]);
         }
     
-        return redirect()->route('files.show', $file)->with('success', ' Publicación creada con éxito');
+        return redirect()->route('files.show', $file)->with('success', __('Post created successfully'));
     }
     
     /**
@@ -144,5 +144,6 @@ class FileController extends Controller
     // Elimina el registro de la BD
     $file->delete();
 
-    return redirect()->route('files.index')->with('success', 'Publicación eliminada correctamente.');    }
+    return redirect()->route('files.index')->with('success', __('Post successfully deleted'));
+    }
 }

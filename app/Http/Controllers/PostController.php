@@ -34,7 +34,7 @@ class PostController extends Controller
             ->paginate(5);        
         $num = $posts->count();
         if ($num == 0 || empty($query)) {
-            return redirect()->route('posts.index')->with('error', 'No se han encontrado publicaciones');
+            return redirect()->route('posts.index')->with('error', __('No publications found'));
         }
         return view('posts.index', compact('posts'));
     }
@@ -95,12 +95,12 @@ class PostController extends Controller
             \Log::debug("DB storage OK");
             // Patró PRG amb missatge d'èxit
             return redirect()->route('posts.index')
-                ->with('success', 'Publicación guardada con éxito');
+                ->with('success', __('Post saved successfully'));
         } else {
             \Log::debug("Disk storage FAILS");
             // Patró PRG amb missatge d'error
             return redirect()->route("files.create")
-                ->with('error', 'Error subiendo publicación');
+                ->with('error', __('Error uploading post'));
         }
 
     }
@@ -112,7 +112,7 @@ class PostController extends Controller
     {
         $fileExists = Storage::disk('public')->exists($post->file->filepath);
         if (!$fileExists) {
-            return redirect()->route('posts.index')->with('error', 'No se ha podido encontrar la imagen publicada');
+            return redirect()->route('posts.index')->with('error', __('The published image could not be found'));
         }
         return view('posts.show', compact('post'));
     }
@@ -163,7 +163,7 @@ class PostController extends Controller
         ]);
 
     
-        return redirect()->route('posts.show', $post)->with('success', ' Publicación modificada con éxito');
+        return redirect()->route('posts.show', $post)->with('success', __('Successfully modified post'));
 
     }
 
@@ -179,7 +179,7 @@ class PostController extends Controller
         // Elimina el registro de la BD
         $post->file->delete();
         $post->delete();
-        return redirect()->route('posts.index')->with('success', 'Publicación eliminada correctamente.');    
+        return redirect()->route('posts.index')->with('success', __('Post successfully deleted.'));    
     }
 
     
@@ -189,12 +189,12 @@ class PostController extends Controller
         $user = auth()->user();
         // Comprueba si ya ha dado like y manda con error
         if ($user->likes->contains($post)) {
-            return back()->with('error', ' Ya has dado like a esta publicación');
+            return back()->with('error', __('You have already liked this post'));
         }
         else {
             $user->likes()->attach($post);
 
-            return back()->with('success', 'Has dado like a la publicación');            
+            return back()->with('success', __('You have liked the post'));            
         }
     }
     public function unlike(Post $post)
@@ -203,12 +203,12 @@ class PostController extends Controller
         $user = auth()->user();
         // Comprueba si el usuario no ha dado like y manda con error
         if (!$user->likes->contains($post)) {
-            return back()->with('error', 'Aún no has dado like a esta publicación.');
+            return back()->with('error', __('You havent liked this post yet.'));
         }
 
         // Remueve el like
         $user->likes()->detach($post);
 
-        return back()->with('success', 'Has quitado el like a la publicación.');
+        return back()->with('success', __('You have unliked the post.'));
     }
 }

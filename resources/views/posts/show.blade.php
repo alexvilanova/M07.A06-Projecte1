@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Detalles de la publicación') }}
+            {{ __('Publication details') }}
         </h2>
     </x-slot>
 
@@ -13,11 +13,11 @@
                         src="{{ asset("storage/{$post->file->filepath}") }}" alt="Post Image">
                 </div>
                 <div>
-                    <p class="mb-2"><strong>Usuario:</strong> {{ $post->user->name }}</p>
-                    <p class="mb-2"><strong>Tamaño de la imagen:</strong> {{ $post->file->filesize }} bytes</p>
-					<p class="mb-2"><strong>Descripción:</strong> {{ $post->description }}</p>
-                    <p class="mb-2"><strong>Fecha de publicación:</strong> {{ $post->created_at->format('d M Y H:i') }}</p>
-                    <p class="mb-2"><strong>Likes:</strong> {{ $post->liked()->count() }}</p>
+                    <p class="mb-2"><strong>{{ __('User') }}:</strong> {{ $post->user->name }}</p>
+                    <p class="mb-2"><strong>{{ __('File Size') }}:</strong> {{ $post->file->filesize }} bytes</p>
+                    <p class="mb-2"><strong>{{ __('Description') }}:</strong> {{ $post->description }}</p>
+                    <p class="mb-2"><strong>{{ __('Publication Date') }}:</strong> {{ $post->created_at->format('d M Y H:i') }}</p>
+                    <p class="mb-2"><strong>{{ __('Likes') }}:</strong> {{ $post->liked()->count() }}</p>
 
                     <hr class="my-6">
 

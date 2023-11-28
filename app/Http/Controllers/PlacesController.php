@@ -69,10 +69,10 @@ class PlacesController extends Controller // Cambia el nombre del controlador
             ]);
 
             return redirect()->route('places.index')
-                ->with('success', 'Lugar guardado con éxito');
+                ->with('success', __('Location successfully saved'));
         } else {
             return redirect()->route('files.create')
-                ->with('error', 'Error subiendo lugar');
+                ->with('error', __('Error uploading place'));
         }
     }
 
@@ -80,7 +80,7 @@ class PlacesController extends Controller // Cambia el nombre del controlador
     {
         $fileExists = Storage::disk('public')->exists($place->file->filepath);
         if (!$fileExists) {
-            return redirect()->route('places.index')->with('error', 'Lugar no encontrado');
+            return redirect()->route('places.index')->with('error', __('Lugar no encontrado'));
         }
         return view('places.show', compact('place'));
     }
@@ -122,7 +122,7 @@ class PlacesController extends Controller // Cambia el nombre del controlador
             'updated_at' => now(),
         ]);
 
-        return redirect()->route('places.show', $place)->with('success', 'Lugar modificado con éxito');
+        return redirect()->route('places.show', $place)->with('success', __('Successfully modified location'));
     }
 
     public function destroy(Place $place)
@@ -134,7 +134,7 @@ class PlacesController extends Controller // Cambia el nombre del controlador
         $place->file->delete();
         $place->delete();
 
-        return redirect()->route('places.index')->with('success', 'Lugar eliminado correctamente.');
+        return redirect()->route('places.index')->with('success', __('Correctly removed place'));
     }
 
     public function favorite(Place $place)
@@ -142,12 +142,12 @@ class PlacesController extends Controller // Cambia el nombre del controlador
         $user = auth()->user();
 
         if ($user->favorites->contains($place)) {
-            return back()->with('error', ' Ya has dado like a esta publicación');
+            return back()->with('error', __('You have already liked this place'));
         }
         else {
             $user->favorites()->attach($place);
 
-            return back()->with('success', 'Has dado like a la publicación');            
+            return back()->with('success', __('You have liked the place'));            
         }
     }
     public function unfavorite(Place $place)
@@ -155,11 +155,11 @@ class PlacesController extends Controller // Cambia el nombre del controlador
         $user = auth()->user();
         
         if (!$user->favorites->contains($place)) {
-            return back()->with('error', 'Aún no has dado like a esta publicación.');
+            return back()->with('error', __('You haven t liked this place yet'));
         }
 
         $user->favorites()->detach($place);
 
-        return back()->with('success', 'Has quitado el like a la publicación.');
+        return back()->with('success', __('You have unliked the post.'));
     }
 }

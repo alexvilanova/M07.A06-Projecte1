@@ -62,5 +62,9 @@ Route::get('posts.search', 'App\Http\Controllers\PostController@search')->name('
 Route::post('/posts/{post}/likes', [PostController::class, 'like'])->name('posts.likes');
 Route::delete('/posts/{post}/likes', [PostController::class, 'unlike'])->name('posts.unlike');
 
+// Multi Idioma
+use App\Http\Controllers\LanguageController;
+
+Route::get('/language/{locale}', [LanguageController::class, 'language'])->name('language');
 
 require __DIR__.'/auth.php';
