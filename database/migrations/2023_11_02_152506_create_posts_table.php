@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('author_id');
             $table->integer('file_id');
+            $table->integer('visibility_id');
             $table->string('title', 20);
             $table->string('description', 150);
             $table->timestamps();

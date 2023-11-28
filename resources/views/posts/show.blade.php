@@ -18,6 +18,7 @@
                     <p class="mb-2"><strong>{{ __('Description') }}:</strong> {{ $post->description }}</p>
                     <p class="mb-2"><strong>{{ __('Publication Date') }}:</strong> {{ $post->created_at->format('d M Y H:i') }}</p>
                     <p class="mb-2"><strong>{{ __('Likes') }}:</strong> {{ $post->liked()->count() }}</p>
+                    <p class="mb-2"><strong>{{ __('Visibility') }}:</strong> {{ __($post->visibility->name) }}</p>
 
                     <hr class="my-6">
 

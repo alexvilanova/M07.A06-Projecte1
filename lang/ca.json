@@ -47,5 +47,10 @@
     "Update Place": "Actualitzar Lloc",
     "Home": "Inici",
     "Create Place": "Crear Lloc",
-    "Save Place": "Guardar Lloc"
+    "Save Place": "Guardar Lloc",
+    "Visibility": "Visibilitat",
+    "public": "Públic",
+    "contacts": "Contactes",
+    "private": "Privat"
+
 }

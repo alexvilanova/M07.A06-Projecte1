@@ -19,6 +19,16 @@
                 <label for="upload" class="block text-sm font-medium text-gray-600">{{__('Select a File')}}</label>
                 <input type="file" name="upload" id="upload" class="mt-1 p-2 w-full border rounded-md" accept=".jpg, .jpeg, .png, .gif">
             </div>
+            <div class="mb-4">
+                <label for="visibility" class="block text-sm font-medium text-gray-600">{{ __('Visibility') }}</label>
+                <select name="visibility_id" id="visibility" class="mt-1 p-2 w-full border rounded-md">
+                    @foreach($visibilities as $visibility)
+                        <option value="{{ $visibility->id }}" @if($visibility->id == $post->visibility->id) selected @endif>
+                            {{ __($visibility->name)  }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
 
             <div class="mt-6">
                 <button type="submit" class="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600">{{__('Upload File')}}</button>

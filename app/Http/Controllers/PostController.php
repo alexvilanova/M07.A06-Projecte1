@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\File;
+use App\Models\Visibility;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
@@ -44,7 +45,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view("posts.create");
+        $visibilities = Visibility::all();
+        return view("posts.create", compact('visibilities'));
     }
 
     /**
@@ -58,6 +60,7 @@ class PostController extends Controller
             'title' => 'required|max:20',
             'description' => 'required|max:150',
             'upload' => 'required|mimes:gif,jpeg,jpg,png|max:1024',
+            'visibility_id' => 'required|exists:visibilities,id',
         ]);
         
        
@@ -85,12 +88,14 @@ class PostController extends Controller
                 'filepath' => $filePath,
                 'filesize' => $fileSize,
             ]);
+            \Log::debug('Visibility ID from form: ' . $request->visibility_id);
             // Create del registro post
             $post = Post::create([
                 'title' => $request->title,
                 'description' => $request->description,
                 'author_id' => $user = auth()->user()->id,
                 'file_id' => $file->id,
+                'visibility_id' => $request->visibility_id,
                 ]);                
             \Log::debug("DB storage OK");
             // Patró PRG amb missatge d'èxit
@@ -122,7 +127,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.edit', compact('post'));
+        $visibilities = Visibility::all();
+        return view('posts.edit', compact('post','visibilities'));
     }
 
     /**
@@ -134,7 +140,8 @@ class PostController extends Controller
         $request->validate([
             'upload' => 'mimes:gif,jpeg,jpg,png|max:1024',
             'title' => 'required|max:20',
-            'description' => 'required|max:150'
+            'description' => 'required|max:150',
+            'visibility_id' => 'required|exists:visibilities,id',
         ]);
         // Comprueba si se ha enviado un nuevo archivo
         if ($request->hasFile('upload')) {
@@ -160,6 +167,7 @@ class PostController extends Controller
             'title' => $newTitle,
             'description' => $newDescription,
             'updated_at' => now(),
+            'visibility_id' => $request->visibility_id,
         ]);
 
     

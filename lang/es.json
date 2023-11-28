@@ -47,5 +47,9 @@
     "Update Place": "Actualizar Lugar",
     "Home": "Inicio",
     "Create Place": "Crear Lugar",
-    "Save Place": "Guardar Lugar"
+    "Save Place": "Guardar Lugar",
+    "Visibility": "Visibilidad",
+    "public": "Público",
+    "contacts": "Contactos",
+    "private": "Privado"
     }

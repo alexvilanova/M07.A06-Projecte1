@@ -9,7 +9,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'author_id', 'file_id'];
+    protected $fillable = ['title', 'description', 'author_id', 'file_id', 'visibility_id'];
     public function file()
     {
        return $this->belongsTo(File::class);
@@ -29,5 +29,9 @@ class Post extends Model
     {
        return $this->belongsToMany(User::class, 'likes');
     }
-    
+    public function visibility()
+    {
+        return $this->belongsTo(Visibility::class);
+    }
+
 }

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name', 255);
             $table->string('description', 255);
             $table->unsignedBigInteger('file_id');
+            $table->integer('visibility_id');
             $table->float('latitude');
             $table->float('longitude');
             $table->unsignedBigInteger('author_id');

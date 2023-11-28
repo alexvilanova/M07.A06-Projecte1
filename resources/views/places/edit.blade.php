@@ -37,6 +37,16 @@
                             <label for="longitude" class="block text-sm font-semibold text-gray-600">{{__('Longitude')}}</label>
                             <input type="text" name="longitude" class="w-full p-2 border rounded-md" value="{{ $place->longitude }}">
                         </div>
+                        <div class="mb-4">
+                            <label for="visibility" class="block text-sm font-medium text-gray-600">{{ __('Visibility') }}</label>
+                            <select name="visibility_id" id="visibility" class="mt-1 p-2 w-full border rounded-md">
+                                @foreach($visibilities as $visibility)
+                                    <option value="{{ $visibility->id }}" @if($visibility->id == $place->visibility->id) selected @endif>
+                                    {{ __($visibility->name)  }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
 
                         <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">{{__('Update Place')}}</button>
 

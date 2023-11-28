@@ -9,7 +9,7 @@ class Place extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'file_id', 'latitude', 'longitude', 'author_id' ];
+    protected $fillable = ['name', 'description', 'file_id', 'latitude', 'longitude', 'author_id', 'visibility_id' ];
 
     public function file()
     {
@@ -27,6 +27,10 @@ class Place extends Model
     public function favorited()
     {
         return $this->belongsToMany(User::class, 'favorites');
+    }
+    public function visibility()
+    {
+        return $this->belongsTo(Visibility::class,);
     }
 
 }

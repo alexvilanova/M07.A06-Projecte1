@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Place; // Asegúrate de importar el modelo correcto
 use Illuminate\Http\Request;
 use App\Models\File;
+use App\Models\Visibility;
 use Illuminate\Support\Facades\Storage;
 
 class PlacesController extends Controller // Cambia el nombre del controlador
@@ -31,7 +32,8 @@ class PlacesController extends Controller // Cambia el nombre del controlador
 
     public function create()
     {
-        return view("places.create");
+        $visibilities = Visibility::all();
+        return view("places.create", compact('visibilities'));
     }
 
     public function store(Request $request)
@@ -42,6 +44,7 @@ class PlacesController extends Controller // Cambia el nombre del controlador
             'latitude' => 'required',
             'longitude' => 'required',
             'upload' => 'required|mimes:gif,jpeg,jpg,png|max:1024',
+            'visibility_id' => 'required|exists:visibilities,id',
         ]);
 
         $upload = $request->file('upload');
@@ -66,6 +69,7 @@ class PlacesController extends Controller // Cambia el nombre del controlador
                 'longitude' => $request->longitude,
                 'author_id' => auth()->user()->id,
                 'file_id' => $file->id,
+                'visibility_id' => $request->visibility_id,
             ]);
 
             return redirect()->route('places.index')
@@ -87,7 +91,8 @@ class PlacesController extends Controller // Cambia el nombre del controlador
 
     public function edit(Place $place)
     {
-        return view('places.edit', compact('place'));
+        $visibilities = Visibility::all();
+        return view('places.edit', compact('place','visibilities'));
     }
 
     public function update(Request $request, Place $place)
@@ -98,6 +103,7 @@ class PlacesController extends Controller // Cambia el nombre del controlador
             'description' => 'required|max:255',
             'latitude' => 'required',
             'longitude' => 'required',
+            'visibility_id' => 'required|exists:visibilities,id',
         ]);
 
         if ($request->hasFile('upload')) {
@@ -120,6 +126,7 @@ class PlacesController extends Controller // Cambia el nombre del controlador
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
             'updated_at' => now(),
+            'visibility_id' => $request->visibility_id,
         ]);
 
         return redirect()->route('places.show', $place)->with('success', __('Successfully modified location'));

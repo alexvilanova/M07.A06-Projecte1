@@ -17,6 +17,7 @@
                     <p class="mb-2"><strong>{{__('Description')}}:</strong> {{ $place->description }}</p>
                     <p class="mb-2"><strong>{{__('Latitude')}}:</strong> {{ $place->latitude }}</p>
                     <p class="mb-2"><strong>{{__('Longitude')}}:</strong> {{ $place->longitude }}</p>
+                    <p class="mb-2"><strong>{{__('Visibility')}}:</strong> {{ __($place->visibility->name)  }}</p>
 
                     <hr class="my-6">
 
