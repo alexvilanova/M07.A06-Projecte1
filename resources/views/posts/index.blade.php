@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class=" max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="mb-4 flex justify-between items-center">
@@ -24,7 +24,7 @@
                         @endcan
                     </div>
                     @foreach ($posts as $post)
-                        <div class="mb-8 border p-2 rounded shadow mx-auto sm:w-full md:w-1/2 lg:w-1/2 xl:w-1/2">
+                        <div class="mb-8 border p-3 rounded shadow mx-auto sm:w-full md:w-1/1 lg:w-1/1 xl:w-1/1">
                             <p class="text-lg font-semibold">
                                 {{ $post->user ? $post->user->name : 'No hay información disponible' }}</p>
                             <a href="{{ route('posts.show', $post) }}">
