@@ -21,7 +21,7 @@
             font-family: 'figtree', sans-serif;
             margin: 0;
             padding: 0;
-            overflow: hidden; /* Evita que el video cause un desplazamiento */
+            
         }
 
         #bg-video {
@@ -63,7 +63,7 @@
             {{ $slot }}
         </main>
         <video autoplay muted loop id="bg-video">
-            <source src="{{ asset('storage/app.mp4') }}" type="video/mp4">
+            <source src="{{ asset('image/app.mp4') }}" type="video/mp4">
             Tu navegador no soporta el tag de video.
         </video>
     </div>

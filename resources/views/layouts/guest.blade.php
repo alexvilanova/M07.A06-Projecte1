@@ -19,7 +19,7 @@
 </head>
 <body class="font-sans text-gray-900 antialiased relative">
     <video autoplay muted loop id="bg-video" class="fixed top-0 left-0 min-w-full min-h-full object-cover">
-        <source src="./storage/login.mp4" type="video/mp4">
+        <source src="./image/login.mp4" type="video/mp4">
         Tu navegador no soporta el tag de video.
     </video>
 
