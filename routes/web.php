@@ -64,7 +64,21 @@ Route::delete('/posts/{post}/likes', [PostController::class, 'unlike'])->name('p
 
 // Multi Idioma
 use App\Http\Controllers\LanguageController;
-
 Route::get('/language/{locale}', [LanguageController::class, 'language'])->name('language');
 
-require __DIR__.'/auth.php';
+// About
+
+Route::get('/about', function (Request $request) {
+    return view('about.index');
+    })->middleware(['auth'])->name('about.index');
+
+Route::get('/about-alex', function (Request $request) {
+    return view('about.alex');
+    })->middleware(['auth'])->name('about.alex');
+
+    Route::get('/about-younes', function (Request $request) {
+    return view('about.younes');
+    })->middleware(['auth'])->name('about.younes');
+    
+    
+        require __DIR__.'/auth.php';

@@ -24,7 +24,11 @@
                 <x-nav-link :href="route('places.index')" :active="request()->routeIs('places*')">
                     {{ __('Places') }}
                 </x-nav-link>
-                
+                <!-- ABOUT -->
+                <x-nav-link :href="route('about.index')" :active="request()->routeIs('about*')">
+                    {{ __('About') }}
+                </x-nav-link>
+
             </div>
 
             <!-- User Dropdown -->

@@ -43,7 +43,6 @@ if (form) {
                 if (inputName === "upload") {
                     errorMessageElement.innerText = error;
                 }
-                // Handle other fields if needed...
             }
 
             // Avoid submit

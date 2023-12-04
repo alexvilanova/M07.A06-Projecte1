@@ -7,7 +7,7 @@
                         <label for="upload">Selecciona un Archivo</label>
                         <input type="file" name="upload" class="form-control" accept=".jpg, .jpeg, .png, .gif">
                     </div>
-                    <span id="upload-error" class="text-red-500 text-sm border bg-gray-600"></span>
+                    <span id="upload-error" class="w-full text-sm text-white bg-red-600 "></span>
                     <button type="submit" class="btn btn-primary hover:underline ">Subir Archivo</button>
                 </form>
                 <a href="{{ route('files.index') }}" class="btn btn-primary hover:underline">Volver</a>
