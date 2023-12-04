@@ -68,17 +68,10 @@ Route::get('/language/{locale}', [LanguageController::class, 'language'])->name(
 
 // About
 
-Route::get('/about', function (Request $request) {
-    return view('about.index');
-    })->middleware(['auth'])->name('about.index');
-
-Route::get('/about-alex', function (Request $request) {
-    return view('about.alex');
-    })->middleware(['auth'])->name('about.alex');
-
-    Route::get('/about-younes', function (Request $request) {
-    return view('about.younes');
-    })->middleware(['auth'])->name('about.younes');
-    
+Route::middleware(['auth'])->group(function () {
+    Route::view('/about', 'about.index')->name('about.index');
+    Route::view('/about-alex', 'about.alex')->name('about.alex');
+    Route::view('/about-younes', 'about.younes')->name('about.younes');
+});    
     
         require __DIR__.'/auth.php';
