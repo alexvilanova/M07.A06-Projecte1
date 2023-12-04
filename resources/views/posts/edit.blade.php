@@ -1,17 +1,19 @@
 <x-app-layout>
     <div class="max-w-5xl mx-auto bg-white bg-opacity-40 p-6 rounded-lg shadow-md">
         <h2 class="text-2xl font-semibold text-gray-800 mb-4">{{__('Upload File')}}</h2>
-        <form method="POST" action="{{ route('posts.update', $post->id) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('posts.update', $post->id) }}" id="update-post-form" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-4">
                 <label for="title" class="block text-sm font-medium text-gray-600">{{__('Title')}}</label>
                 <input type="text" value="{{ $post->title }}" name="title" id="title" class="mt-1 p-2 w-full border rounded-md">
+                <span id="error-title" class="text-red-500"></span>
             </div>
 
             <div class="mb-4">
                 <label for="description" class="block text-sm font-medium text-gray-600">{{__('Description')}}</label>
                 <textarea name="description" id="description" class="mt-1 p-2 w-full border rounded-md" rows="4">{{ $post->description }}</textarea>
+                <span id="error-description" class="text-red-500"></span>
             </div>
 
             <div class="mb-4">
@@ -28,6 +30,7 @@
                         </option>
                     @endforeach
                 </select>
+                <span id="error-visibility" class="text-red-500"></span>
             </div>
 
             <div class="mt-6">
