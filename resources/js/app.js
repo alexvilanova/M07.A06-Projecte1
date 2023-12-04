@@ -2,6 +2,8 @@ import './bootstrap';
 import './files/create';
 import './posts/create';
 import './posts/update';
+import './places/create';
+import './places/update';
 
 import Alpine from 'alpinejs';
 

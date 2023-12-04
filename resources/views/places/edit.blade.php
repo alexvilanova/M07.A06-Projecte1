@@ -9,18 +9,20 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white bg-opacity-40 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white bg-opacity-40 border-b border-gray-200">
-                    <form action="{{ route('places.update', $place->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('places.update', $place->id) }}" id="update-place-form" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
                         <div class="mb-4 ">
                             <label for="name" class="block text-sm font-semibold text-gray-600">{{__('Name')}}</label>
                             <input type="text" name="name" class="w-full p-2 border rounded-md" value="{{ $place->name }}">
+                            <span id="error-name" class="text-red-500"></span>
                         </div>
 
                         <div class="mb-4">
                             <label for="description" class="block text-sm font-semibold text-gray-600">{{__('Description')}}</label>
                             <textarea name="description" class="w-full p-2 border rounded-md">{{ $place->description }}</textarea>
+                            <span id="error-description" class="text-red-500"></span>
                         </div>
 
                         <div class="mb-4">
@@ -31,11 +33,13 @@
                         <div class="mb-4">
                             <label for="latitude" class="block text-sm font-semibold text-gray-600">{{__('Latitude')}}</label>
                             <input type="text" name="latitude" class="w-full p-2 border rounded-md" value="{{ $place->latitude }}">
+                            <span id="error-latitude" class="text-red-500"></span>
                         </div>
 
                         <div class="mb-4">
                             <label for="longitude" class="block text-sm font-semibold text-gray-600">{{__('Longitude')}}</label>
                             <input type="text" name="longitude" class="w-full p-2 border rounded-md" value="{{ $place->longitude }}">
+                            <span id="error-longitude" class="text-red-500"></span>
                         </div>
                         <div class="mb-4">
                             <label for="visibility" class="block text-sm font-medium text-gray-600">{{ __('Visibility') }}</label>
@@ -46,6 +50,7 @@
                                     </option>
                                 @endforeach
                             </select>
+                            <span id="error-visibility" class="text-red-500"></span>
                         </div>
 
                         <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">{{__('Update Place')}}</button>
