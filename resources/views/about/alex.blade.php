@@ -24,7 +24,12 @@
                         <li>Interfaz de usuario (UI) y experiencia de usuario (UX)</li>
                         <li>Colaboración en equipo y liderazgo técnico</li>
                     </ul>
+                <div class="video-container hidden">
+                    <video id="profile-video" controls autoplay muted width="800" height="600">
+                        <source src="{{asset('video/alex.mp4') }}" type="video/mp4">
+                    </video>
             </div>
+        </div>
 
         </div>
         <div class="mt-4">
@@ -62,21 +67,36 @@
         .image-container:hover .hovered {
             opacity: 1;
         }
+
+        .video-container {
+            padding
+        }
+
+        .hidden {
+            display: none;
+        }
     </style>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var audio = document.querySelector('audio');
 
-        var imageContainer = document.querySelector('.image-container');
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var audio = document.querySelector('audio');
+            var videoContainer = document.querySelector('.video-container');
+            var video = document.getElementById('profile-video');
 
-        imageContainer.addEventListener('mouseover', function () {
-            audio.play();
+            var imageContainer = document.querySelector('.image-container');
+
+            imageContainer.addEventListener('mouseover', function () {
+                audio.play();
+            });
+
+            imageContainer.addEventListener('mouseout', function () {
+                audio.pause();
+            });
+
+            imageContainer.addEventListener('click', function () {
+                    videoContainer.classList.remove('hidden');
+                    video.play();
+            });
         });
-
-        imageContainer.addEventListener('mouseout', function () {
-            audio.pause();
-        });
-    });
-</script>
-
+    </script>
 </x-app-layout>
