@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Sobre Nosotros
+            Sobre Nosaltres
         </h2>
     </x-slot>
 
@@ -89,9 +89,16 @@
         .audio-container {
             display: none;
         }
+
+        .center-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 10vh; 
+        }
     </style>
 
-    <div class="container relative" onclick="openModal()">
+    <div class="container relative" data-twe-modal x-on:click="openModal()">
         <div class="video-container">
             <img id="serious-img" src="image/hombre.jpg" alt="Serious Image">
             <img id="funny-img" src="image/dog.jpg" alt="Funny Image">
@@ -102,17 +109,28 @@
         </div>
     </div>
 
-    <div id="modal" class="modal" onclick="closeModal()">
+    <div id="modal" class="modal" data-twe-modal x-on:click="closeModal()">
         <div class="modal-content">
-            <video id="video-modal" autoplay muted>
-                <source src="image/como.mp4" type="video/mp4">
-                Tu navegador no soporta la etiqueta de video.
-            </video>
+            <div class="video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/ykGRYEX0n60" frameborder="0" allowfullscreen></iframe>
+            </div>
+            
+            <div class="center-btn mt-4">
+                <a href="{{ route('about.younes')}}" class="text-white bg-blue-500 hover:bg-blue-600 py-2 px-4 rounded-md mt-4 transition duration-300 ease-in-out">
+                    Volver atrás
+                </a>
+            </div>
         </div>
     </div>
 
     <div class="audio-container">
         <audio id="audio" src="image/MORAD.mp3"></audio>
+    </div>
+
+    <div class="center-btn mt-4">
+        <a href="{{ route('about.index')}}" class=" text-white bg-blue-500 hover:bg-blue-600 py-2 px-4 rounded-md mt-4 transition duration-300 ease-in-out">
+            Volver atrás
+        </a>
     </div>
 
     <script>
