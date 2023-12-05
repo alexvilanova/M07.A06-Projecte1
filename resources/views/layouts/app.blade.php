@@ -13,6 +13,7 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-solid-straight/css/uicons-solid-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -44,8 +45,8 @@
         }
     </style>
 </head>
-<body class="font-sans antialiased">
-    <div class="min-h-screen">
+<body class="font-sans antialiased bg-no-repeat bg-cover bg-center bg-fixed">
+    <div class="min-h-screen flex flex-col">
         @include('layouts.navigation')
 
         @if (isset($header))
@@ -56,13 +57,13 @@
         </header>
         @endif
 
-        <main class="content-wrapper">
+        <main class="flex-1 content-wrapper">
             <div class="w-full">
                 @include('partials.flash')
             </div>
             {{ $slot }}
         </main>
-        <video autoplay muted loop id="bg-video">
+        <video autoplay muted loop id="bg-video" class="hidden md:block absolute inset-0 object-cover w-full h-full">
             <source src="{{ asset('image/app.mp4') }}" type="video/mp4">
             Tu navegador no soporta el tag de video.
         </video>

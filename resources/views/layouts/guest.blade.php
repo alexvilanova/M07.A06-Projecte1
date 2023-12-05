@@ -16,6 +16,34 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.j'])
+
+    <style>
+        body {
+            font-family: 'figtree', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .content-wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
 </head>
 <body class="font-sans text-gray-900 antialiased relative">
     <video autoplay muted loop id="bg-video" class="fixed top-0 left-0 min-w-full min-h-full object-cover">
@@ -23,10 +51,10 @@
         Tu navegador no soporta el tag de video.
     </video>
 
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-transparent relative z-10">
-    <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 bg-opacity-40 shadow-md overflow-hidden sm:rounded-lg">
-        {{ $slot }}
+    <div class="content-wrapper bg-transparent">
+        <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 bg-opacity-40 shadow-md overflow-hidden sm:rounded-lg">
+            {{ $slot }}
+        </div>
     </div>
-</div>
 </body>
 </html>
