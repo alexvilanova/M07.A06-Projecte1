@@ -1,9 +1,8 @@
 <x-app-layout>
     <div class="mx-auto bg-white p-6 flex flex-col items-center justify-center">
-        <!-- ITEM 1 -->
         <div class="max-w-5xl mx-auto flex mb-8 rounded-md">
             <div class="flex-shrink-0 mr-8">
-                <img src="{{ asset ('image/usuario.png')}}" alt="Image" class="w-32 h-32 rounded-full">
+                <img src="{{ asset ('image/usuario.png')}}" alt="Image" class="original w-32 h-32 rounded-full">
             </div>
 
             <div class="m-4">
@@ -29,4 +28,20 @@
             </a>
         </div>
 </div>
+<style>
+ img:nth-child(1) {
+    transition: transform 0.5s ease-in-out;
+}
+img:nth-child(2) {
+    displa
+}
+
+
+img:hover:nth-child(1) {
+    transform: scaleY(-1);
+    z-index: 1; 
+}
+
+
+</style>
 </x-app-layout>
