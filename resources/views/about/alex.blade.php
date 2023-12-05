@@ -7,6 +7,7 @@
                     <img src="{{ asset ('image/usuario.png')}}" alt="Image" class="original rounded-full">
                     <img src="{{ asset ('image/usuario-modified.png')}}" alt="Image" class="hovered rounded-full">
                 </div>  
+                <audio src="{{ asset('audio/electrico.mp3')}}" type="audio/mpeg"></audio>
             </div>
 
             <div class="m-4">
@@ -62,4 +63,20 @@
             opacity: 1;
         }
     </style>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var audio = document.querySelector('audio');
+
+        var imageContainer = document.querySelector('.image-container');
+
+        imageContainer.addEventListener('mouseover', function () {
+            audio.play();
+        });
+
+        imageContainer.addEventListener('mouseout', function () {
+            audio.pause();
+        });
+    });
+</script>
+
 </x-app-layout>
