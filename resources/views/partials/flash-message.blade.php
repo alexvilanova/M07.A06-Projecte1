@@ -6,7 +6,17 @@ $tailwindClass = [
     'info'    => 'p-5 text-[#055160] bg-[#cff4fc] border border-[#b6effb] rounded',
 ]
 @endphp
-<div class="{{ $tailwindClass[$type] }}" role="alert">
+<div class="{{ $tailwindClass[$type] }} relative" role="alert">
     {{ $message }}
-    <button type="button" class="float-right" data-dismiss-target="alert" aria-label="Close">X</button>
+    <button type="button" class="float-right" data-dismiss-target="alert" aria-label="Close" onclick="closeAlert(this)">X</button>
 </div>
+
+<script>
+    function closeAlert(button) {
+        // Encuentra el elemento padre del botón (el div que contiene el mensaje)
+        var alertDiv = button.closest('.relative');
+        
+        // Oculta el elemento del mensaje
+        alertDiv.style.display = 'none';
+    }
+</script>
