@@ -90,5 +90,9 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->belongsTo(Role::class);
     }
- 
-}
+        
+    public function getRoleNames()
+    {
+        return [$this->role->name];
+    }
+    }

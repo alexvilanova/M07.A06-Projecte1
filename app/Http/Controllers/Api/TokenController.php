@@ -11,12 +11,13 @@ class TokenController extends Controller
     public function user(Request $request)
     {
         $user = User::where('email', $request->user()->email)->first();
-       
+        
         return response()->json([
             "success" => true,
             "user"    => $request->user(),
-            "roles"   => $user->role(),
+            "roles"   => $user->getRoleNames(),
         ]);
+
     }
  
     public function register(Request $request) {
@@ -31,6 +32,7 @@ class TokenController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => \Hash::make($request->password),
+                'role_id' => 1,
             ]);
             $token = $user->createToken("authToken")->plainTextToken;
 
