@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Auth\Access\Response;
 
 class PostPolicy
@@ -29,7 +30,7 @@ class PostPolicy
      */
     public function create(User $user): bool
     {
-        return $user->role_id == 1;
+        return $user->role_id == Role::AUTHOR;
     }
 
     /**

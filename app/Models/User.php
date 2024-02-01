@@ -93,6 +93,21 @@ class User extends Authenticatable implements FilamentUser
         
     public function getRoleNames()
     {
-        return [$this->role->name];
+        return $this->role->name;
+    }
+
+    public function isAdmin()
+    {
+        return $this->role_id == Role::ADMIN;
+    }
+
+    public function isEditor()
+    {
+        return $this->role_id == Role::EDITOR;
+    }
+
+    public function isPublisher()
+    {
+        return $this->role_id == Role::AUTHOR;
     }
     }
