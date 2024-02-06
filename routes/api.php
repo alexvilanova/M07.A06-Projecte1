@@ -29,14 +29,25 @@ Route::middleware('auth:sanctum')->post('/logout', [TokenController::class, 'log
 | API POSTS & COMMENTS
 |--------------------------------------------------------------------------
 */
-Route::middleware('auth:sanctum')->get('posts', [PostController::class, 'index']);
-Route::middleware('auth:sanctum')->get('posts/{post}', [PostController::class, 'show']);
-Route::middleware('auth:sanctum')->post('posts', [PostController::class, 'store']);
-Route::middleware('auth:sanctum')->put('posts/{post}', [PostController::class, 'update']);
-Route::middleware('auth:sanctum')->delete('posts/{post}', [PostController::class, 'destroy']);
-Route::middleware('auth:sanctum')->post('posts/{post}/likes', [PostController::class, 'like']);
-Route::middleware('auth:sanctum')->delete('posts/{post}/likes', [PostController::class, 'unlike']);
-Route::middleware('auth:sanctum')->post('posts/{post}/comments', [CommentController::class, 'store']);
+Route::middleware('auth:sanctum')->group(function () {
+    // Rutas grupales relacionadas con posts
+    Route::prefix('posts')->group(function () {
+        Route::get('/', [PostController::class, 'index']);
+        Route::get('/{post}', [PostController::class, 'show']);
+        Route::post('/', [PostController::class, 'store']);
+        Route::put('/{post}', [PostController::class, 'update']);
+        Route::delete('/{post}', [PostController::class, 'destroy']);
+
+        // Rutas likes sobre posts
+        Route::post('/{post}/likes', [PostController::class, 'like']);
+        Route::delete('/{post}/likes', [PostController::class, 'unlike']);
+
+        // Rutas de comentarios relacionados con una publicación.
+        Route::get('/{post}/comments', [CommentController::class, 'index']);
+        Route::post('/{post}/comments', [CommentController::class, 'store']);
+        Route::delete('/{post}/comments/{comment}', [CommentController::class, 'destroy']);
+    });
+});
 
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

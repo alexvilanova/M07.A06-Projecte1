@@ -10,7 +10,7 @@ use Illuminate\Http\UploadedFile;
 class PostTest extends TestCase
 {
 
-    private static $token = '74|yWpuvN5xw68TeaIgcd70pTqAUz0weXyqIKelpZq1d73bb8a1';
+    private static $token = '3|TcAHUxaiEGd2t6SEHXDsora1KEdtrWX52GHzlpZt10b80c38';
 
     public function test_post_list()
     {

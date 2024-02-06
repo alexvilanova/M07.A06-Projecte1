@@ -12,9 +12,15 @@ class CommentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($postId)
     {
-        //
+        if ( $this->authorize('viewAny', App\Models\Post::class)) {
+            $post = Post::find($postId);
+            return response()->json([
+                'success' => true,
+                'data' => $post->comments ?? []
+            ], 200);
+        }
     }
 
     /**
@@ -22,19 +28,32 @@ class CommentController extends Controller
      */
     public function store(Request $request, $postId)
     {
-        $request->validate([
-            'comment' => 'required|string',
-        ]);
-    
-        $post = Post::findOrFail($postId);
-        $user = auth()->user();
-        \Log::debug($user);
-        $comment = $post->comments()->create([
-            'user_id' => $user->id,
-            'content' => $request->comment,
-        ]);        
-        return response()->json($comment, 201);
-    }
+        if ( $this->authorize('create', App\Models\Comment::class)) {
+
+            $request->validate([
+                'comment' => 'required|string',
+            ]);
+        
+            $post = Post::find($postId);
+            if (!$post) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Post not found'
+                ], 404);    
+            }
+            
+            $user = auth()->user();
+            $comment = $post->comments()->create([
+                'author_id' => $user->id,
+                'comment' => $request->comment,
+            ]);
+            
+            return response()->json([
+                'success' => true,
+                'data' => $comment
+            ], 201);
+        }
+}
     
     /**
      * Display the specified resource.
@@ -43,20 +62,32 @@ class CommentController extends Controller
     {
         //
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($postId, $commentId)
     {
-        //
-    }
+        $post = Post::find($postId);
+        $comment = Comment::find($commentId);
+        \Log::debug($comment);
+        if (!$post) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Post not found'
+            ], 404);    
+        }
+        if (!$comment) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Comment not found'
+            ], 404);    
+        }
+        if ( $this->authorize('delete', $comment)) {
+            $comment->delete();
+            return response()->json([
+                'success' => true,
+                'data' => $post
+            ], 200);
+        }
+}
 }
