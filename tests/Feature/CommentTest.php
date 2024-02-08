@@ -11,7 +11,7 @@ class CommentTest extends TestCase
     /**
      * A basic feature test example.
      */
-    private static $token = "3|TcAHUxaiEGd2t6SEHXDsora1KEdtrWX52GHzlpZt10b80c38";
+    private static $token = "3|5C3KEDdWNOjc4OLS7KdRvN8x38qq8cJkvwe44AcR1d38679a";
     public static $postId = "1";
 
     public function test_comments_list()

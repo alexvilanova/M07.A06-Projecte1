@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-5">
         <div class="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
@@ -33,7 +33,7 @@
                             <i class="fas fa-edit"></i> <i class="fi fi-sr-blog-pencil"></i>
                         </a>
                         @endcan
-                        @can('delete', $post)
+                        <!-- @can('delete', $post) -->
                         <form action="{{ route('posts.destroy', $post->id) }}" method="POST"
                             onsubmit="return confirm('¿Estás seguro?')">
                             @csrf
@@ -42,10 +42,15 @@
                                 <i class="fas fa-trash-alt"></i> <i class="fi fi-sr-trash-xmark"></i>
                             </button>
                         </form>
-                        @endcan
+                        <!-- @endcan -->
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg mt-4">
+            @include('posts.comments.create')
+            @include('posts.comments.list', ['comments' => $comments])
+            {{ $comments->links() }}
         </div>
     </div>
 </x-app-layout>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +66,10 @@ Route::get('posts.search', 'App\Http\Controllers\PostController@search')->name('
 // Likes de posts
 Route::post('/posts/{post}/likes', [PostController::class, 'like'])->name('posts.likes');
 Route::delete('/posts/{post}/likes', [PostController::class, 'unlike'])->name('posts.unlike');
+
+// Comentaris de posts
+Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('posts.comments');
+Route::delete('/posts/{post}/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
 // Multi Idioma
 use App\Http\Controllers\LanguageController;

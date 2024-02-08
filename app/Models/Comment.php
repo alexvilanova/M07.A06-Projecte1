@@ -17,7 +17,7 @@ class Comment extends Model
 
     public function author()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class, 'author_id');
     }
     
 }
