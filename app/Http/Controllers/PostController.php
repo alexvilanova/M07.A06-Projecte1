@@ -119,7 +119,7 @@ class PostController extends Controller
         if (!$fileExists) {
             return redirect()->route('posts.index')->with('error', __('The published image could not be found'));
         }
-        $comments = $post->comments()->paginate(3);
+        $comments = $post->comments()->orderBy('created_at', 'desc')->paginate(3);
 
         return view('posts.show', compact('post', 'comments'));
     }
