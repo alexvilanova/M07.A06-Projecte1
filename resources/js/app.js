@@ -4,7 +4,8 @@ import './posts/create';
 import './posts/update';
 import './places/create';
 import './places/update';
-import './twe.js'
+import './twe.js';
+import './matomo.js'
 
 import Alpine from 'alpinejs';
 
