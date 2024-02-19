@@ -1,24 +1,52 @@
 {
     "version": 2,
-    "functions": {
-        "api/index.php": { "runtime": "vercel-php@0.6.1" }
-    },
-    "routes": [{
+    "builds": [
+      {
+        "src": "public/index.php",
+        "use": "@vercel/php"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/build/(.*)",
+        "headers": {
+          "cache-control": "s-maxage=31536000, immutable"
+        },
+        "dest": "/public/build/$1"
+      },
+      {
+        "src": "/storage/(.*)",
+        "headers": {
+          "cache-control": "s-maxage=31536000, immutable"
+        },
+        "dest": "/public/storage/$1"
+      },
+      {
+        "src": "/favicon.ico",
+        "dest": "/public/favicon.ico"
+      },
+      {
+        "src": "/robots.txt",
+        "dest": "/public/robots.txt"
+      },
+      {
         "src": "/(.*)",
-        "dest": "/api/index.php"
-    }],
+        "dest": "/public/index.php"
+      }
+    ],
     "env": {
-        "APP_ENV": "production",
-        "APP_DEBUG": "true",
-        "APP_URL": "https://m07-a06-projecte1-6o2k.vercel.app",
-        "APP_CONFIG_CACHE": "/tmp/config.php",
-        "APP_EVENTS_CACHE": "/tmp/events.php",
-        "APP_PACKAGES_CACHE": "/tmp/packages.php",
-        "APP_ROUTES_CACHE": "/tmp/routes.php",
-        "APP_SERVICES_CACHE": "/tmp/services.php",
-        "VIEW_COMPILED_PATH": "/tmp",
-        "CACHE_DRIVER": "array",
-        "LOG_CHANNEL": "stderr",
-        "SESSION_DRIVER": "cookie"
+      "APP_ENV": "production",
+      "APP_DEBUG": "false",
+      "APP_URL": "https://m07-a06-projecte1-6o2k.vercel.app",
+      "APP_CONFIG_CACHE": "/tmp/config.php",
+      "APP_EVENTS_CACHE": "/tmp/events.php",
+      "APP_PACKAGES_CACHE": "/tmp/packages.php",
+      "APP_ROUTES_CACHE": "/tmp/routes.php",
+      "APP_SERVICES_CACHE": "/tmp/services.php",
+      "VIEW_COMPILED_PATH": "/tmp",
+      "CACHE_DRIVER": "array",
+      "LOG_CHANNEL": "stderr",
+      "SESSION_DRIVER": "cookie"
     }
-}
+  }
+  
