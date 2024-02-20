@@ -30,7 +30,7 @@ Route::get('/language/{locale}', [LanguageController::class, 'language'])->name(
 require __DIR__.'/auth.php';
 
 Route::get('/build/assets/{path}', function (Request $request, $path) {
-    $filepath = asset('build/assets/'. $path);
+    $filepath = public_path('build/assets/'. $path);
     Log::info($filepath);
     return response()->file($filepath);
 });
