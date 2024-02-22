@@ -26,6 +26,9 @@
        <script type="module" src="{{ asset('build/'.$manifest['resources/js/app.js']['file']) }}"></script>
    @endenv
 
+    <!-- SEO -->
+    {!! seo() !!}
+
     <style>
         body {
             font-family: 'figtree', sans-serif;

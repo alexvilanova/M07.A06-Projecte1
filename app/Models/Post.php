@@ -4,12 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use RalphJSmit\Laravel\SEO\Support\HasSEO;
 
 class Post extends Model
 {
     use HasFactory;
+    use HasSEO;
 
     protected $fillable = ['title', 'description', 'author_id', 'file_id', 'visibility_id'];
+
+    protected function getDynamicSEOData(): SEOData
+    {
+        return new SEOData(
+            title: $this->title,
+            description: $this->excerpt,
+            author: $this->author_id->name,
+        );
+    }
+
     public function file()
     {
        return $this->belongsTo(File::class);

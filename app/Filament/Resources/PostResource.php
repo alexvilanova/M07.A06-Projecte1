@@ -13,6 +13,7 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\RichEditor;
+use RalphJSmit\Filament\SEO\SEO;
 
 class PostResource extends Resource
 {
@@ -53,6 +54,8 @@ class PostResource extends Resource
                         Forms\Components\RichEditor::make('description') 
                             ->required(),                       
                     ]),
+                SEO::make(),
+
             ]);
     }
 
