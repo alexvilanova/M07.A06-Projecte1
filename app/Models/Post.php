@@ -17,8 +17,8 @@ class Post extends Model
     {
         return new SEOData(
             title: $this->title,
-            description: $this->excerpt,
-            author: $this->author_id->name,
+            description: $this->description,
+            author: $this->author->name,
         );
     }
 
